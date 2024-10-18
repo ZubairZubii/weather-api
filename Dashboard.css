@@ -1,0 +1,864 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('assets/sky8.jpg') no-repeat center center fixed; 
+    background-size: cover; 
+    color: #e4e4e4; /* Light text color */
+    overflow-y: hidden; /* Disable vertical overflow */
+    animation: fadeInBackground 1s ease-in-out; /* Fade in the background */
+}
+
+@keyframes fadeInBackground {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.user-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: bounceIn 0.8s ease-in-out; /* Bounce in animation */
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.profile-image {
+    width: 100px; /* Set the desired width */
+    height: 100px; /* Set the desired height */
+    border-radius: 50%; /* Make it circular */
+    border: 2px solid #ccc; /* Optional border */
+    object-fit: cover; /* Ensures the image covers the area */
+}
+
+header {
+    background: transparent; /* Transparent header */
+    padding: 10px 20px; /* Reduced padding */
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap for responsiveness */
+    justify-content: space-between; /* Space between title, search, and profile */
+    align-items: center;
+    color: white;
+    box-shadow: none; /* Remove shadow */
+    animation: slideIn 0.7s ease-in-out; /* Slide in from top */
+}
+
+#doughnutChart {
+    width: 300px;  /* Set desired width */
+    height: 300px; /* Set desired height */
+    max-width: 100%; /* Ensure responsiveness */
+}
+
+
+
+@keyframes slideIn {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.app-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-container {
+    display: flex;
+    flex-grow: 1; /* Allows the search container to grow */
+    margin-right: 20px; /* Space between search bar and other elements */
+    margin-left: 20px; /* Adjusted left margin */
+}
+
+#city-input {
+    padding: 8px; /* Reduced padding */
+    border: none;
+    border-radius: 10px; /* Added rounded corners */
+    outline: none;
+    width: 70%; /* Full width of the main content */
+    margin-right: 10px; /* Margin to the right of the input to separate from the button */
+    
+}
+
+
+
+#search-button {
+    padding: 8px; /* Decreased padding */
+    border: none;
+    background-color: #f39c12; /* Consistent button color */
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s; /* Added transformation on hover */
+    border-radius: 10px; /* Added rounded corners */
+}
+
+#search-button:hover {
+    background-color: #d68910; /* Darker on hover */
+    transform: scale(1.1); /* Button scale on hover */
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #f39c12; /* Profile border */
+    transition: transform 0.3s; /* Animation on hover */
+}
+
+.user-profile img:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 60px); /* Adjust the height of the main container */
+}
+
+.sidebar {
+    background: #2b2b3c; /* Dark sidebar */
+    width: 80px; /* Decreased sidebar width */
+    margin: 20px; /* Margin from all sides */
+    padding: 10px; /* Reduced padding */
+    color: white;
+    box-shadow: 2px 0 5px #2b2b3c;
+    border-radius: 10px; /* Added rounded corners */
+    animation: slideInLeft 0.6s ease-in-out; /* Slide-in effect */
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.sidebar-icon {
+    font-size: 40px; /* Decreased icon size for the sidebar */
+    text-align: center;
+    margin-bottom: 8px; /* Reduced space between icons */
+}
+
+.sidebar-title {
+    text-align: center;
+    font-size: 18px; /* Slightly decreased font size */
+    margin: 8px 5px; /* Adjusted margin */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    color: white;
+    text-decoration: none;
+    padding: 5px 5px; /* Decreased padding for less height */
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s; /* Smooth background and scale on hover */
+    width: 80%; /* Ensure anchor takes full width of the li */
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background: #383848; /* Slightly lighter on hover */
+    transform: scale(1.05); /* Slight scaling on hover */
+}
+
+
+/* Modify main content */
+.main-content {
+    flex: 1;
+    padding: 10px; /* Decreased padding */
+    margin-left: -20px;
+    overflow-y: auto;
+    border-radius: 10px;
+    margin-top: -20px; /* Move the main content up */
+    animation: slideInLeft 0.8s ease-in-out; /* Slide-in effect from left */
+}
+
+/* New Animation for main-content */
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); } /* Start from left */
+    to { transform: translateX(0); } /* Move to original position */
+}
+
+/* Other styles remain unchanged */
+
+
+@keyframes fadeInContent {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.current-weather {
+    padding: 8px; /* Decreased padding */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px #2b2b3c;
+    margin-bottom: 8px; /* Reduced bottom margin */
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between location and image */
+    animation: fadeIn 0.5s ease-in; /* Fade-in animation */
+}
+
+.weather-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.weather-location {
+    flex: 1; /* Allow space for temperature and description */
+}
+
+/* Current Weather Image Size */
+#weather-icon {
+    width: 100px; /* Decreased size for weather icon */
+    height: 100px; /* Decreased size for weather icon */
+    transition: transform 0.3s; /* Animation for icon */
+}
+
+#weather-icon:hover {
+    transform: rotate(360deg); /* Rotate on hover */
+}
+
+.forecast {
+    margin-top: 5px; /* Adjusted margin */
+}
+
+.forecast-container {
+    background: #2b2b3c; /* Background for the forecast container */
+    padding: 5px; /* Decreased padding */
+    border-radius: 10px; /* Added rounded corners */
+    margin: 5px 0; /* Small margin above and below the container */
+    animation: slideInRight 0.7s ease-in-out; /* Slide-in from right */
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* Chart Layout */
+/* Outer Charts Container */
+.charts-container {
+    background: #2b2b3c; /* Background for the charts container */
+    padding: 5px; /* Decreased padding */
+    border-radius: 10px; /* Added rounded corners */
+    margin: 5px 0; /* Small margin above and below the container */
+    animation: fadeIn 0.8s ease-in-out; /* Fade-in effect for charts */
+}
+
+.charts {
+    display: flex; /* Keep charts in a row */
+    justify-content: space-between; /* Space between chart containers */
+    flex-wrap: wrap; /* Allow wrapping for responsive design */
+    overflow: hidden; /* Hide overflow for the charts */
+}
+
+/* Inner Chart Containers */
+.chart-container {
+    background: #2b2b3c; /* Consistent background */
+    padding: 5px; /* Decreased padding for less height */
+    border: 1px solid #444; /* Border for each inner chart */
+    border-radius: 10px; /* Added rounded corners */
+    margin: 5px; /* Small margin around inner chart containers */
+    flex: 1 1 calc(29% - 10px); /* Adjust to fit three charts in a row, with space */
+    max-width: calc(29% - 10px); /* Set a max-width to prevent overflow */
+    height: 170px; /* Set a fixed height for each chart container */
+    animation: zoomIn 0.7s ease-in-out; /* Zoom-in animation for charts */
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+/* Forecast Item Alignment */
+.forecast-info {
+    display: flex; /* Keep forecast items in a row */
+    justify-content: space-between; /* Even spacing between forecast items */
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.forecast-item {
+    background: #2b2b3c; /* Consistent background */
+    padding: 4px; /* Decreased padding */
+    border: 1px solid #444; /* Border for each forecast item */
+    border-radius: 10px; /* Added rounded corners */
+    margin: 5px; /* Small margin around forecast items */
+    text-align: center;
+    flex: 1 1 calc(20% - 10px); /* Adjusted to keep same width as chart containers */
+}
+
+/* Pagination Button Styles */
+.pagination {
+    display: flex;
+    justify-content: center; /* Center the pagination */
+    margin-top: 10px; /* Space above pagination */
+}
+
+.pagination button {
+    background-color: #f39c12; /* Button color */
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Decreased padding */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    margin: 0 5px; /* Space between buttons */
+    transition: background 0.3s, transform 0.3s; /* Add transform effect */
+}
+
+.pagination button:hover {
+    background-color: #d68910; /* Darker on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+.pagination button:disabled {
+    background-color: #666; /* Disabled state color */
+    cursor: not-allowed; /* Change cursor */
+}
+
+/* New styles for temperature toggle */
+.temp-toggle {
+    margin: 5px 0; /* Decreased margin */
+}
+
+.temp-toggle button {
+    background-color: #2b2b3c;
+    color: white;
+    border: none;/* General Styles */
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background: url('assets/sky8.jpg') no-repeat center center fixed; 
+        background-size: cover; 
+        color: #e4e4e4; /* Light text color */
+    }
+    
+    header {
+        background: transparent; /* Transparent header */
+        padding: 10px 30px; /* Reduced padding */
+        display: flex;
+        justify-content: flex-start; /* Align items to the left */
+        align-items: center;
+        color: white;
+        box-shadow: none; /* Remove shadow */
+    }
+    
+    .app-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    .search-container {
+        display: flex;
+        flex-grow: 1; /* Allows the search container to grow */
+        margin-right: 20px; /* Space between search bar and other elements */
+        margin-left: 60px; /* Added left margin to the search container */
+    }
+    
+    #city-input {
+        padding: 8px; /* Reduced padding */
+        border: none;
+        border-radius: 10px; /* Added rounded corners */
+        outline: none;
+        width: 70%; /* Full width of the main content */
+        margin-right: 10px; /* Margin to the right of the input to separate from the button */
+    }
+    
+    #search-button {
+        padding: 8px; /* Decreased padding */
+        border: none;
+        background-color: #f39c12; /* Consistent button color */
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s;
+        border-radius: 10px; /* Added rounded corners */
+    }
+    
+    #search-button:hover {
+        background-color: #d68910; /* Darker on hover */
+    }
+    
+    .user-profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid #f39c12; /* Profile border */
+        transition: transform 0.3s; /* Animation on hover */
+    }
+    
+    .user-profile img:hover {
+        transform: scale(1.1); /* Scale effect on hover */
+    }
+    
+    .container {
+        display: flex;
+        height: calc(100vh - 60px); /* Adjust the height of the main container */
+    }
+    
+    .sidebar {
+        background: #2b2b3c; /* Dark sidebar */
+        width: 80px; /* Sidebar width */
+        margin: 20px; /* Margin from all sides */
+        padding: 10px; /* Padding */
+        color: white;
+        box-shadow: 2px 0 5px #2b2b3c;
+        border-radius: 10px; /* Rounded corners */
+        display: flex; /* Use flexbox to control layout */
+        flex-direction: column; /* Arrange items vertically */
+        align-items: center; /* Center items horizontally */
+    }
+    
+    .sidebar-title {
+        text-align: center; /* Center the title */
+        font-size: 16px; /* Font size */
+        margin: 0; /* Remove top/bottom margins to keep it within bounds */
+        padding: 5px 0; /* Add padding for some space around the title */
+    }
+    
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        width: 100%; /* Make the ul take the full width of the sidebar */
+    }
+    
+    .sidebar ul li {
+        width: 100%; /* Ensure li takes full width */
+    }
+    
+    .sidebar ul li a {
+        display: flex; /* Use flexbox for alignment */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        color: white;
+        text-decoration: none;
+        padding: 10px; /* Increased padding for better hover area */
+        border-radius: 5px; /* Rounded corners */
+        transition: background 0.3s;
+        width: 100%; /* Ensure anchor takes full width of the li */
+        margin: 5px 0; /* Add vertical margin between items for better spacing */
+    }
+    
+    .sidebar ul li a .icon {
+        font-size: 20px; /* Adjusted icon size */
+    }
+    
+    .sidebar ul li a .text {
+        margin-top: 4px; /* Adjusted space between icon and text */
+        text-align: center; /* Center the text */
+    }
+    
+    .sidebar ul li a:hover,
+    .sidebar ul li a.active {
+        background: #383848; /* Highlight on hover */
+    }
+    
+    
+    .main-content {
+        flex: 1;
+        padding: 10px; /* Decreased padding */
+        margin-left: -20px;
+        overflow-y: auto;
+        border-radius: 10px;
+        margin-top: -20px; /* Move the main content up */
+    }
+    
+    .current-weather {
+        padding: 8px; /* Decreased padding */
+        border-radius: 10px;
+        box-shadow: 0 2px 10px #2b2b3c;
+        margin-bottom: 8px; /* Reduced bottom margin */
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Space between location and image */
+        animation: fadeIn 0.5s; /* Animation */
+    }
+    
+    .weather-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .weather-location {
+        flex: 1; /* Allow space for temperature and description */
+    }
+    
+    /* Current Weather Image Size */
+    #weather-icon {
+        width: 100px; /* Decreased size for weather icon */
+        height: 100px; /* Decreased size for weather icon */
+    }
+    
+    .forecast {
+        margin-top: 5px; /* Adjusted margin */
+    }
+    
+    .forecast-container {
+        background: #2b2b3c; /* Background for the forecast container */
+        padding: 5px; /* Decreased padding */
+        border-radius: 10px; /* Added rounded corners */
+        margin: 5px 0; /* Small margin above and below the container */
+        height: 40px; /* Decreased height for today's forecast */
+    }
+    
+    .charts-container {
+        background: #2b2b3c; /* Background for the charts container */
+        padding: 10px; /* Added padding for breathing space */
+        border-radius: 10px; /* Added rounded corners */
+        margin: 10px 0; /* Increased margin for better spacing */
+    }
+    
+    /* Chart Layout */
+    .charts {
+        display: flex; /* Keep charts in a row */
+        justify-content: space-around; /* Even space between chart containers */
+        flex-wrap: wrap; /* Allow wrapping for responsive design */
+    }
+    
+    /* Inner Chart Containers */
+    .chart-container {
+        background: #2b2b3c; /* Consistent background */
+        padding: 10px; /* Decreased padding for less height */
+        border: 1px solid #444; /* Border for each inner chart */
+        border-radius: 10px; /* Added rounded corners */
+        margin: 10px; /* Increased margin for more space */
+        flex: 1 1 calc(30% - 20px); /* Use 30% width minus margins for responsiveness */
+        max-width: calc(30% - 20px); /* Set a max-width to prevent overflow */
+        height: auto; /* Allow the height to adjust based on content */
+    }
+
+    
+    /* Forecast Item Alignment */
+    .forecast-info {
+        display: flex; /* Keep forecast items in a row */
+        justify-content: space-between; /* Even spacing between forecast items */
+        flex-wrap: nowrap; /* Prevent wrapping */
+
+    }
+    
+    .forecast-item {
+        background: #2b2b3c; /* Background color */
+        padding: 5px; /* Decrease padding */
+        border: 1px solid #444; /* Border for each forecast item */
+        border-radius: 10px; /* Added rounded corners */
+        margin: 5px; /* Small margin around forecast items */
+        text-align: center; /* Center text alignment */
+        flex: 1 1 calc(20% - 10px); /* Keep width adjustment */
+        height: 40px; /* Set a fixed height (adjust this value as needed) */
+        display: flex; /* Use flexbox for alignment */
+        align-items: center; /* Center items vertically */
+        justify-content: space-between; /* Space between content */
+    }
+    
+    
+    /* Pagination Button Styles */
+    .pagination {
+        display: flex;
+        justify-content: center; /* Center the pagination */
+        margin-top: 10px; /* Space above pagination */
+    }
+    
+    .pagination button {
+        background-color: #f39c12; /* Button color */
+        color: white;
+        border: none;
+        padding: 8px 12px; /* Decreased padding */
+        cursor: pointer;
+        border-radius: 5px; /* Rounded corners */
+        margin: 0 5px; /* Space between buttons */
+        transition: background 0.3s, transform 0.3s; /* Add transform effect */
+    }
+    
+    .pagination button:hover {
+        background-color: #d68910; /* Darker on hover */
+        transform: scale(1.05); /* Slight scaling effect */
+    }
+    
+    .pagination button:disabled {
+        background-color: #666; /* Disabled state color */
+        cursor: not-allowed; /* Change cursor */
+    }
+    
+    /* New styles for temperature toggle */
+    .temp-toggle {
+        margin: 5px 0; /* Decreased margin */
+    }
+    
+    .temp-toggle button {
+        background-color: #2b2b3c;
+        color: white;
+        border: none;
+        padding: 6px 10px; /* Decreased padding */
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 5px;
+        transition: background 0.3s;
+    }
+    
+    .temp-toggle button:hover {
+        background-color: #383848; /* Darker on hover */
+    }
+    
+    .temp-toggle button.active {
+        background-color: #f39c12; /* Highlight active button */
+    }
+    
+    hr {
+        border: none; /* Remove default border */
+        border-top: 1px solid #444; /* Add custom border */
+        margin: 20px 0; /* Margin around the line */
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    
+    padding: 6px 10px; /* Decreased padding */
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: background 0.3s;
+}
+
+.temp-toggle button:hover {
+    background-color: #383848; /* Darker on hover */
+}
+
+.temp-toggle button.active {
+    background-color: #f39c12; /* Highlight active button */
+}
+
+hr {
+    border: none; /* Remove default border */
+    border-top: 1px solid #444; /* Add custom border */
+    margin: 10px 0; /* Margin above and below */
+}
+
+
+/* Loading Spinner Styles */
+.loading-spinner {
+    position: fixed; /* Position it fixed to the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the spinner */
+    z-index: 1000; /* Ensure it appears on top of other elements */
+    display: none; /* Hidden by default */
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3); /* Light border */
+    border-top: 8px solid #f39c12; /* Color of the spinner */
+    border-radius: 50%; /* Round shape */
+    width: 50px; /* Size of the spinner */
+    height: 50px; /* Size of the spinner */
+    animation: spin 1s linear infinite; /* Animation for spinning effect */
+}
+
+/* Keyframes for spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px); /* Optional: Adds a slight upward movement */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Adjust duration and easing */
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0); /* Reset position */
+}
+/* Chart Layout for Larger Screens */
+@media (min-width: 1201px) {
+    .chart-container {
+        flex: 1 1 calc(30% - 20px); /* Use 30% width minus margins for larger screens */
+        height: auto; /* Allow the height to adjust based on content */
+        margin: 10px; /* Margin for spacing */
+    }
+}
+
+/* General Responsive Styles */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 60px; /* Reduce sidebar width */
+    }
+
+    header {
+        padding: 10px 15px; /* Reduce header padding */
+    }
+
+    .app-title {
+        font-size: 20px; /* Smaller title font */
+    }
+
+    .search-container {
+        margin-left: 10px; /* Further reduced left margin */
+        display: flex; /* Ensure elements are in a flex container */
+        align-items: center; /* Center vertically */
+    }
+
+    #city-input {
+        width: 70%; /* Adjust input width for better fit */
+        padding: 8px; /* Add padding for input */
+    }
+
+    #search-button {
+        padding: 8px; /* Add padding for button */
+        margin-left: 5px; /* Space between input and button */
+    }
+
+    .user-profile {
+        margin-left: 10px; /* Space between profile and other elements */
+    }
+
+    .charts {
+        flex-direction: row; /* Ensure charts are in a row */
+        justify-content: space-between; /* Even space between chart containers */
+    }
+
+    .chart-container {
+        flex: 1 1 calc(45% - 20px); /* Adjust for two charts per row */
+        margin: 10px; /* Add margin for spacing */
+        height: auto; /* Allow height to adjust */
+        max-width: calc(45% - 20px); /* Set max-width for responsiveness */
+    }
+
+    .forecast-item {
+        flex: 1 1 calc(45% - 10px); /* Adjust for two forecast items per row */
+    }
+}
+
+@media (max-width: 932px) {
+    header {
+        flex-direction: column; /* Stack header items vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .app-title {
+        margin-bottom: 10px; /* Space below title */
+    }
+
+    .search-container {
+        margin-left: 0; /* Reset left margin */
+        width: 100%; /* Full width for search container */
+    }
+
+    #city-input {
+        width: 70%; /* Wider input for smaller screens */
+        margin-right: 5px; /* Space between input and button */
+    }
+
+    #search-button {
+        width: auto; /* Adjust button width */
+        padding: 10px 15px; /* Button padding */
+    }
+
+    .user-profile {
+        margin-bottom: 10px; /* Space below profile */
+    }
+
+    .sidebar {
+        display: none; /* Hide sidebar */
+    }
+
+    .main-content {
+        padding: 5px; /* Reduce padding */
+        margin: 0; /* Reset margins */
+    }
+
+    .charts {
+        flex-direction: column; /* Stack charts vertically */
+    }
+
+    .chart-container {
+        flex: 1 1 100%; /* Full width for charts */
+        height: 150px; /* Adjust height */
+        max-width: 100%; /* Ensure no overflow */
+    }
+
+    .forecast-info {
+        flex-direction: column; /* Stack forecast items vertically */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack header items vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .search-container {
+        margin-left: 0; /* Reset left margin */
+        width: 100%; /* Full width for search container */
+    }
+
+    .user-profile {
+        margin-top: 10px; /* Space above profile for better layout */
+    }
+
+    #city-input {
+        width: 60%; /* Wider input for smaller screens */
+    }
+
+    #search-button {
+        width: auto; /* Adjust button width */
+        padding: 10px 15px; /* Button padding */
+    }
+
+    .chart-container {
+        flex: 1 1 calc(70% - 10px); /* Full width for smaller screens */
+        margin: 5px 0; /* Adjust margin for smaller screens */
+        height: 120px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .app-title {
+        font-size: 18px; /* Smaller title for small screens */
+    }
+
+    .current-weather {
+        flex-direction: column; /* Stack weather details vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    #weather-icon {
+        width: 80px; /* Smaller icon */
+        height: 80px; /* Smaller icon */
+    }
+
+    .pagination {
+        flex-direction: column; /* Stack pagination vertically */
+    }
+
+    .pagination button {
+        width: 100%; /* Full width pagination buttons */
+        margin: 5px 0; /* Space between buttons */
+    }
+
+    .chart-container {
+        flex: 1 1 calc(100% - 10px); /* Ensure full width on very small screens */
+        height: 100px; /* Further decrease height for very small screens */
+    }
+}

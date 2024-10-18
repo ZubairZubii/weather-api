@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+      </script>
+      
+    <title>Weather Tables</title>
+</head>
+<body>
+    <header>
+        <div class="app-title">Weather App</div>
+
+        <div class="search-container">
+            <input type="text" placeholder="Search for a city..." id="city-input" aria-label="Search for a city">
+            <button id="search-button" aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="user-profile">
+            <img src="assets/user_profile.jpg" alt="User Profile" class="profile-image" />
+        </div>
+        
+
+    </header>
+    <div class="container">
+        <nav class="sidebar" aria-label="Navigation">
+            <div class="sidebar-icon">
+                <i class="fas fa-cloud-sun"></i>
+            </div>
+            <ul>
+                <li>
+                    <a href="index.html" class="active" aria-current="page">
+                        <div class="icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="text">Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="table.html" class="active" aria-current="page">
+                        <div class="icon"><i class="fas fa-table"></i></div>
+                        <div class="text">Tables</div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <div class="table-container">
+                <div class="filters">
+                    <div class="filter-buttons">
+                        <button id="sort-asc">Sort by Temperature Ascending</button>
+                        <button id="sort-desc">Sort by Temperature Descending</button>
+                        <button id="filter-rain">Filter Days with Rain</button>
+                        <button id="highest-temp">Show Highest Temperature</button>
+                    </div>
+                </div>
+                <table id="forecast-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Temperature (°C)</th>
+                            <th>Conditions</th>
+                            <th>Icon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Weather forecast data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+                <div class="pagination" id="pagination">
+                    <button class="page-btn" id="prev-page">Prev</button>
+                    <span id="page-info">Page 1 of X</span>
+                    <button class="page-btn" id="next-page">Next</button>
+                </div>
+            </div>
+
+            <div class="weather-detail-panel">
+                <h2>Weather Details</h2>
+                <p><strong>City:</strong> <span id="city-name">--</span></p> <!-- New city name display -->
+                <div class="weather-detail">
+                    <p><strong>Humidity:</strong> <span id="humidity">--</span>%</p>
+                    <p><strong>Wind Speed:</strong> <span id="wind-speed">--</span> km/h</p>
+                    <p><strong>Conditions:</strong> <span id="current-conditions">--</span></p>
+                    <p><strong>Selected Date:</strong> <span id="selected-date">--</span></p>
+                </div>
+            </div>
+            
+
+            <div class="chatbot">
+                <div class="chatbot-icon" id="chatbot-icon">
+                    <i class="fas fa-comments fa-2x"></i>
+                </div>
+            </div>
+            
+            <!-- Chatbot Modal -->
+            <div class="chatbot-modal" id="chatbot-modal">
+                <div class="modal-content">
+                    <span class="close-button" id="close-button">&times;</span>
+                    <h2>Weather Chatbot</h2>
+                    <div class="chat-bar">
+                        <input type="text" placeholder="Ask me anything about weather..." id="chat-input" style="flex: 2;">
+                        <input type="text" placeholder="Enter country name..." id="country-input" style="flex: 1; margin-left: 10px;">
+                        <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    <div class="answer-area" id="answer-area">
+                        <!-- Chatbot responses will be displayed here -->
+                    </div>
+                </div>
+            </div>
+            
+
+        </main>
+    </div>
+
+     <!-- Loading Spinner -->
+     <div id="loading" class="loading-spinner" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script type="module" src="table.js"></script>
+
+</body>
+</html>

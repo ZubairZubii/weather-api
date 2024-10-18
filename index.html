@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header>
+        <div class="app-title">Weather App</div>
+        <div class="search-container">
+            <input type="text" placeholder="Search for a city..." id="city-input" aria-label="Search for a city">
+            <button id="search-button" aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="user-profile">
+            <img src="assets/user_profile.jpg" alt="User Profile" class="profile-image" />
+        </div>
+    </header>
+
+
+    
+    <div class="container">
+        <nav class="sidebar" aria-label="Navigation">
+            <div class="sidebar-icon">
+                <i class="fas fa-cloud-sun"></i>
+            </div>
+    
+            <ul>
+                <li>
+                    <a href="index.html" class="active" aria-current="page">
+                        <div class="icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="text">Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="table.html" class="active" aria-current="page">
+                        <div class="icon"><i class="fas fa-table"></i></div>
+                        <div class="text">Tables</div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <main class="main-content" role="main">
+            <div class="current-weather" aria-live="polite">
+                <div class="weather-header">
+                    <div class="weather-location">
+                        <h2>Current Weather in <span id="city-name">City</span></h2>
+                        <p id="temperature">--°C</p>
+                        <div class="temp-toggle">
+                            <button id="toggle-celsius" class="active">°C</button>
+                            <button id="toggle-fahrenheit">°F</button>
+                        </div>
+                        
+                        <p id="humidity">Humidity: --%</p>
+                        <p id="wind-speed">Wind Speed: -- m/s</p>
+                    </div>
+                    <img id="weather-icon" src="http://openweathermap.org/img/wn/01d.png" alt="Weather Icon">
+                </div>
+                <p id="weather-description">--</p>
+            </div>
+            
+            <div class="forecast-container">
+                <h3>Today's Forecast</h3>
+                <div class="forecast-info" id="forecast-info">
+                    <!-- Forecast Items will be dynamically inserted here -->
+                </div>
+                <div class="pagination">
+                    <button id="prev-page" disabled><i class="fas fa-chevron-left"></i> </button>
+                    <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="charts-container">
+                <div class="charts">
+                    <div class="chart-container">
+                        <h3>Temperature Chart</h3>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Weather Distribution</h3>
+                        <canvas id="doughnutChart" width="300" height="300"></canvas>
+
+                    </div>
+                    <div class="chart-container">
+                        <h3>Temperature Trends</h3>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading-spinner" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Error Message -->
+    <div id="error-message" class="error" style="display:none;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script> <!-- Ensure to link your JavaScript file -->
+</body>
+</html>
